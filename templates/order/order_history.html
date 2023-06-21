@@ -1,0 +1,266 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<h2> change password </h2>
+{% endblock title %}
+
+{% block content %}
+
+<!-- inner page banner -->
+<div class="section inner_banner">
+    <div class="container">
+       <div class="row">
+          <div class="col-md-12">
+             <div class="full">
+                <h3>Shopping Cart</h3>
+                <ul class="breadcrum">
+                   <li><a href="{% url 'home_page' %}">Home</a></li>
+                   <li>&gt;</li>
+                   <li>Shopping Cart</li>
+                </ul>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+ <!-- end inner page banner -->
+ <!-- section -->
+ <div id="content-page" class="section main-content-box shopping-cart-box">
+    <div class="container-fluid limit-box">
+       <div class="row">
+        
+          <div class="col-12">
+             <div class="table-responsive">
+                <table class="table">
+                   <caption>Enjoy <strong>Free Shipping</strong> every day on orders over $65 </caption>
+                   <thead>
+                      <tr>
+                         <th class="w-50" scope="col">Product</th>
+                         <th class="text-center" scope="col">Quantity</th>
+                         <th class="d-none d-sm-table-cell" scope="col">Price</th>
+                         <th class="d-none d-sm-table-cell" scope="col">Total</th>
+                      </tr>
+                   </thead>
+                   <tbody>
+                    {% for abc in order_history %}
+                      <tr>
+                         <th scope="row">
+                            <div class="s-cart-box">
+                               <div class="product-item-info media">
+                                  <div class="product-item-photo mr-3 d-none d-md-block">
+                                     <div class="item-gallery">
+                                        <a href="#"> <img src="{{ abc.product.cover_image.url }}" alt=""/> </a>
+                                     </div>
+                                  </div>
+                                  <div class="media-body">
+                                     <a href="detail.html" class="h6">{{ abc.product }}</a>
+                                     <div class="small">{{ abc.variation }} <span class="mx-2">|</span> {{ abc.order.date_time }} </div>
+                                     <div class="mb-1"> <span class="d-inline d-sm-none small">Price: <span class="text-theme">$110.00</span></span> <span class="badge badge-success custom-badge arrowed-right">{{ abc.order.status }}</span> </div>
+                                     <div class="btn-group btn-group-sm">
+                                        <!-- <button class="btn btn-light py-0 d-none d-md-block">Move to wishlist</button>
+                                        <button class="btn btn-light py-0">Remove</button> -->
+                                     </div>
+                                  </div>
+                               </div>
+                            </div>
+                         </th>
+                         <td class="text-center">
+                            <div class="form-group input-group-qty d-inline-flex">
+                               {{ abc.quantity }}  <!-- <input id="colorful1" class="form-control" value="1" min="0" max="20" type="number"/>  -->
+                            </div>
+                            <div class="d-block d-sm-none">
+                               <small>Subtotal </small>
+                               <div class="text-theme">  hhh </div>
+                            </div>
+                         </td>
+                         <td class="d-none d-sm-table-cell">
+                            <div class="price-box"> <span> ₹ {{ abc.price }}</span> </div>
+                         </td>
+                         <td class="d-none d-sm-table-cell">
+                            <div class="price-box"> <span> {{ abc.Total_price }} </span> </div>
+                         </td>
+                      </tr>
+                      {% endfor %}
+                      <!-- <tr>
+                         <th scope="row">
+                            <div class="s-cart-box">
+                               <div class="product-item-info media">
+                                  <div class="product-item-photo mr-3 d-none d-md-block">
+                                     <div class="item-gallery">
+                                        <a href="#"> <img src="images/fp2.png" alt=""/> </a>
+                                     </div>
+                                  </div>
+                                  <div class="media-body">
+                                     <a href="detail.html" class="h6">Black Solid Slim Fit</a>
+                                     <div class="small">Size: M <span class="mx-2">|</span> Color: Black</div>
+                                     <div class="mb-1"> <span class="d-inline d-sm-none small">Price: <span class="text-theme">$110.00</span></span> <span class="badge badge-danger custom-badge arrowed-right">Out of stock</span> </div>
+                                     <div class="btn-group btn-group-sm">
+                                        <button class="btn btn-light py-0 d-none d-md-block">Move to wishlist</button>
+                                        <button class="btn btn-light py-0">Remove</button>
+                                     </div>
+                                  </div>
+                               </div>
+                            </div>
+                         </th>
+                         <td class="text-center">
+                            <div class="form-group input-group-qty d-inline-flex">
+                               <input class="form-control" value="1" min="0" max="20" type="number"/> 
+                            </div>
+                            <div class="d-block d-sm-none">
+                               <small>Subtotal </small>
+                               <div class="text-theme">$110.00</div>
+                            </div>
+                         </td>
+                         <td class="d-none d-sm-table-cell">
+                            <div class="price-box"> <span class="line">$210.00</span> <span>$110.00</span> </div>
+                         </td>
+                         <td class="d-none d-sm-table-cell">
+                            <div class="price-box"> <span>$110.00</span> </div>
+                         </td>
+                      </tr>
+                      <tr>
+                         <th scope="row">
+                            <div class="s-cart-box">
+                               <div class="product-item-info media">
+                                  <div class="product-item-photo mr-3 d-none d-md-block">
+                                     <div class="item-gallery">
+                                        <a href="#"> <img src="images/fp3.png" alt=""/> </a>
+                                     </div>
+                                  </div>
+                                  <div class="media-body">
+                                     <a href="detail.html" class="h6">Red Solid Slim Fit</a>
+                                     <div class="small">Size: L <span class="mx-2">|</span> Color: Red</div>
+                                     <div class="mb-1"> <span class="d-inline d-sm-none small">Price: <span class="text-theme">$110.00</span></span> <span class="badge badge-success custom-badge arrowed-right">In stock</span> </div>
+                                     <div class="btn-group btn-group-sm">
+                                        <button class="btn btn-light py-0 d-none d-md-block">Move to wishlist</button>
+                                        <button class="btn btn-light py-0">Remove</button>
+                                     </div>
+                                  </div>
+                               </div>
+                            </div>
+                         </th>
+                         <td class="text-center">
+                            <div class="form-group input-group-qty d-inline-flex">
+                               <input class="form-control" value="1" min="0" max="20" type="number"/> 
+                            </div>
+                            <div class="d-block d-sm-none">
+                               <small>Subtotal </small>
+                               <div class="text-theme">$110.00</div>
+                            </div>
+                         </td>
+                         <td class="d-none d-sm-table-cell">
+                            <div class="price-box"> <span>$110.00</span> </div>
+                         </td>
+                         <td class="d-none d-sm-table-cell">
+                            <div class="price-box"> <span>$110.00</span> </div>
+                         </td>
+                      </tr>
+                      <tr>
+                         <th scope="row">
+                            <div class="s-cart-box">
+                               <div class="product-item-info media">
+                                  <div class="product-item-photo mr-3 d-none d-md-block">
+                                     <div class="item-gallery">
+                                        <a href="#"> <img src="images/fp4.png" alt=""/> </a>
+                                     </div>
+                                  </div>
+                                  <div class="media-body">
+                                     <a href="detail.html" class="h6">White Solid Slim Fit</a>
+                                     <div class="small">Size: XL <span class="mx-2">|</span> Color: White</div>
+                                     <div class="mb-1"> <span class="d-inline d-sm-none small">Price: <span class="text-theme">$110.00</span></span> <span class="badge badge-success custom-badge arrowed-right">In stock</span> </div>
+                                     <div class="btn-group btn-group-sm">
+                                        <button class="btn btn-light py-0 d-none d-md-block">Move to wishlist</button>
+                                        <button class="btn btn-light py-0">Remove</button>
+                                     </div>
+                                  </div>
+                               </div>
+                            </div>
+                         </th>
+                         <td class="text-center">
+                            <div class="form-group input-group-qty d-inline-flex">
+                               <input class="form-control" value="1" min="0" max="20" type="number"/> 
+                            </div>
+                            <div class="d-block d-sm-none">
+                               <small>Subtotal </small>
+                               <div class="text-theme">$110.00</div>
+                            </div>
+                         </td>
+                         <td class="d-none d-sm-table-cell">
+                            <div class="price-box"> <span>$110.00</span> </div>
+                         </td>
+                         <td class="d-none d-sm-table-cell">
+                            <div class="price-box"> <span>$110.00</span> </div>
+                         </td>
+                      </tr> -->
+                   </tbody>
+                </table>
+             </div>
+          </div>
+        
+       </div>
+       <!-- <div class="row my-5">
+          <div class="col-lg-4 col-sm-6">
+             <div class="coupon-box">
+                <h3>Coupon Code</h3>
+                <p>Enter your coupon code if you have one.</p>
+                <div class="input-group input-group-sm">
+                   <input class="form-control" placeholder="Enter your coupon code" aria-label="Coupon code" type="text"/>
+                   <div class="input-group-append">
+                      <button class="btn btn-theme" type="button">Apply Coupon</button>
+                   </div>
+                </div>
+             </div>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+             <div class="gift-box">
+                <h3>Gift Voucher</h3>
+                <p>Enter your Gift Voucher if you have one.</p>
+                <div class="input-group input-group-sm">
+                   <input class="form-control" placeholder="Enter your voucher code" aria-label="Coupon code" type="text"/>
+                   <div class="input-group-append">
+                      <button class="btn btn-theme" type="button">Apply Voucher</button>
+                   </div>
+                </div>
+             </div>
+          </div>
+          <div class="col-lg-4 col-sm-12">
+             <div class="order-box">
+                <h3>Order summary</h3>
+                <div class="d-flex">
+                   <h4>Sub Total</h4>
+                   <div class="ml-auto"> $440</div>
+                </div>
+                <div class="d-flex">
+                   <h4>Discount</h4>
+                   <div class="ml-auto"> $40</div>
+                </div>
+                <hr class="my-1"/>
+                <div class="d-flex">
+                   <h4>Coupon Discount</h4>
+                   <div class="ml-auto"> $10</div>
+                </div>
+                <div class="d-flex">
+                   <h4>Tax</h4>
+                   <div class="ml-auto"> $2</div>
+                </div>
+                <div class="d-flex">
+                   <h4>Shipping Cost</h4>
+                   <div class="ml-auto"> Free </div>
+                </div>
+                <hr/>
+                <div class="d-flex gr-total">
+                   <h5>Grand Total</h5>
+                   <div class="ml-auto h5"> $388</div>
+                </div>
+             </div>
+          </div>
+          <div class="col-12 d-flex shopping-box"> <a href="index-2.html" class="btn btn-default">Continue Shopping</a> <a href="checkout.html" class="ml-auto btn btn-primary">Checkout</a> </div>
+       </div> -->
+    </div>
+ </div>
+ <!-- end section -->
+
+
+
+{% endblock content %}

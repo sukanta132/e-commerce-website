@@ -1,0 +1,233 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="section">
+    <div class="container-fuild">
+       <div class="row">
+          <div class="map_section">
+             <div id="map"></div>
+          </div>
+       </div>
+    </div>
+ </div>
+ <!-- end section -->
+ <!-- section -->
+ <div id="content-page" class="section main-content-box my-account">
+    <div class="container">
+       <div class="row">
+          <div class="col-md-12">
+             <div class="main_heading">
+                <h2><span class="style_head">Contact <strong>us</strong></span></h2>
+             </div>
+          </div>
+       </div>
+       <div class="row">
+          <div class="col-lg-6 col-md-12">
+             <div class="contact_form">
+                <div class="contact-box">
+                   <form id="contact-form" class="form-horizontal" method="POST" action="#">
+                     {% csrf_token %}
+                      <div class="messages"></div>
+                      <div class="row">
+                         <div class="col-md-12">
+                            <div class="form-group">
+                               <label>Name</label>
+                               <input id="form_name" type="text" name="name" class="form-control" placeholder="" required="required" data-error="Firstname is required."/>
+                               <div class="help-block with-errors"></div>
+                            </div>
+                         </div>
+                      </div>
+                      <div class="row">
+                         <div class="col-md-12">
+                            <div class="form-group">
+                               <label>Email Address</label>
+                               <input id="form_email" type="email" name="email" class="form-control" placeholder="" required="required" data-error="Valid email is required."/>
+                               <div class="help-block with-errors"></div>
+                            </div>
+                         </div>
+                         <div class="col-md-12">
+                            <div class="form-group">
+                               <label>Phone Number</label>
+                               <input id="form_phone" type="tel" name="phone" class="form-control" placeholder="" required="required" data-error="Phone is required"/>
+                               <div class="help-block with-errors"></div>
+                            </div>
+                         </div>
+                      </div>
+                      <div class="row">
+                         <div class="col-md-12">
+                            <div class="form-group">
+                               <label>Message</label>
+                               <textarea id="form_message" name="message" class="form-control" placeholder="" rows="4" required="required" data-error="Please,leave us a message."></textarea>
+                               <div class="help-block with-errors"></div>
+                            </div>
+                         </div>
+                         <div class="col-md-12">
+                            <button class="btn btn-sub hover-btn"><span>Submit</span></button>
+                         </div>
+                      </div>
+                   </form>
+                </div>
+             </div>
+          </div>
+          <div class="col-lg-6 col-md-12">
+             <div class="title"> <span>Contact Information</span> </div>
+             <div class="contact-info">
+                <div class="address-box">
+                   <h3>Address 1</h3>
+                   <ul>
+                      <li><span><i class="fa fa-map-marker" aria-hidden="true"></i></span> 8386 Keyshawn Springs Suite 214</li>
+                      <li><span><i class="fa fa-volume-control-phone" aria-hidden="true"></i></span> +61 (02) 6722 2548</li>
+                      <li><span><i class="fa fa-fax" aria-hidden="true"></i></span> +61 (02) 6722 2548</li>
+                      <li><span><i class="fa fa-envelope" aria-hidden="true"></i></span> <a href="https://html.design/cdn-cgi/l/email-protection#e5868a8b91848691a59790838488cb868a88"><span class="__cf_email__" data-cfemail="8fece0e1fbeeecfbcffdfae9eee2a1ece0e2">[email&#160;protected]</span></a></li>
+                   </ul>
+                </div>
+                <div class="address-box">
+                   <h3>Address 2</h3>
+                   <ul>
+                      <li><span><i class="fa fa-map-marker" aria-hidden="true"></i></span> 8386 Keyshawn Springs Suite 214</li>
+                      <li><span><i class="fa fa-volume-control-phone" aria-hidden="true"></i></span> +61 (02) 6722 4848</li>
+                      <li><span><i class="fa fa-fax" aria-hidden="true"></i></span> +61 (02) 6722 4848</li>
+                      <li><span><i class="fa fa-envelope" aria-hidden="true"></i></span> <a href="https://html.design/cdn-cgi/l/email-protection#75161a1b011416013507001314185b161a18"><span class="__cf_email__" data-cfemail="01626e6f7560627541737467606c2f626e6c">[email&#160;protected]</span></a></li>
+                   </ul>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+ <!-- end section -->
+ <!-- section -->
+ 
+ <!-- Javascript files-->
+ <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/jquery.min.js"></script>
+ <script src="js/popper.min.js"></script>
+ <script src="js/bootstrap.bundle.min.js"></script>
+ <script src="js/jquery-3.0.0.min.js"></script>
+ <script src="js/plugin.js"></script>
+ <!-- sidebar -->
+ <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+ <!-- custom js -->
+ <script src="js/custom.js"></script>
+ <!-- map js -->.
+ <script>
+    function initMap() {
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 11,
+        center: {lat: 40.645037, lng: -73.880224},
+    styles: [
+             {
+               elementType: 'geometry',
+               stylers: [{color: '#fefefe'}]
+             },
+             {
+               elementType: 'labels.icon',
+               stylers: [{visibility: 'off'}]
+             },
+             {
+               elementType: 'labels.text.fill',
+               stylers: [{color: '#616161'}]
+             },
+             {
+               elementType: 'labels.text.stroke',
+               stylers: [{color: '#f5f5f5'}]
+             },
+             {
+               featureType: 'administrative.land_parcel',
+               elementType: 'labels.text.fill',
+               stylers: [{color: '#bdbdbd'}]
+             },
+             {
+               featureType: 'poi',
+               elementType: 'geometry',
+               stylers: [{color: '#eeeeee'}]
+             },
+             {
+               featureType: 'poi',
+               elementType: 'labels.text.fill',
+               stylers: [{color: '#757575'}]
+             },
+             {
+               featureType: 'poi.park',
+               elementType: 'geometry',
+               stylers: [{color: '#e5e5e5'}]
+             },
+             {
+               featureType: 'poi.park',
+               elementType: 'labels.text.fill',
+               stylers: [{color: '#9e9e9e'}]
+             },
+             {
+               featureType: 'road',
+               elementType: 'geometry',
+               stylers: [{color: '#eee'}]
+             },
+             {
+               featureType: 'road.arterial',
+               elementType: 'labels.text.fill',
+               stylers: [{color: '#3d3523'}]
+             },
+             {
+               featureType: 'road.highway',
+               elementType: 'geometry',
+               stylers: [{color: '#eee'}]
+             },
+             {
+               featureType: 'road.highway',
+               elementType: 'labels.text.fill',
+               stylers: [{color: '#616161'}]
+             },
+             {
+               featureType: 'road.local',
+               elementType: 'labels.text.fill',
+               stylers: [{color: '#9e9e9e'}]
+             },
+             {
+               featureType: 'transit.line',
+               elementType: 'geometry',
+               stylers: [{color: '#e5e5e5'}]
+             },
+             {
+               featureType: 'transit.station',
+               elementType: 'geometry',
+               stylers: [{color: '#000'}]
+             },
+             {
+               featureType: 'water',
+               elementType: 'geometry',
+               stylers: [{color: '#c8d7d4'}]
+             },
+             {
+               featureType: 'water',
+               elementType: 'labels.text.fill',
+               stylers: [{color: '#b1a481'}]
+             }
+           ]
+    });
+    
+      var image = 'images/marker_red.png';
+      var beachMarker = new google.maps.Marker({
+        position: {lat: 40.645037, lng: -73.880224},
+        map: map,
+        icon: image
+      });
+    }
+ </script>
+ <!-- end map js -->
+ <!-- google map js -->
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8eaHt9Dh5H57Zh0xVTqxVdBFCvFMqFjQ&amp;callback=initMap"></script>
+ <!-- end google map js -->
+
+<script type='text/javascript' style='display:none;' async>
+__ez.queue.addFile('/detroitchicago/edmonton.webp', '/detroitchicago/edmonton.webp?a=a&cb=0&shcb=34', true, ['/detroitchicago/minneapolis.js'], true, false, false, false);
+__ez.queue.addFile('/porpoiseant/jellyfish.webp', '/porpoiseant/jellyfish.webp?a=a&cb=0&shcb=34', false, [], true, false, false, false);
+</script>
+
+<script>var _audins_dom="html_design",_audins_did=317139;__ez.queue.addDelayFunc("audins.html","__ez.script.add", "../../../go.ezoic.net/detroitchicago/audins0d9f.js?cb=195-0");</script><noscript><div style="display:none;"><img src="../../../pixel.quantserve.com/pixel/p-31iz6hfFutd16d537.gif?labels=Domain.html_design,DomainId.317139" border="0" height="1" width="1" alt="Quantcast"/></div></noscript>
+<script type="text/javascript" data-cfasync="false"></script>
+<script>__ez.queue.addFile('../../tardisrocinante/vitals.js', '../../tardisrocinante/vitals5038.js?gcb=0&amp;cb=3', false, ['/detroitchicago/minneapolis.js'], true, false, true, false);</script>
+<script>__ez.queue.addFile('../../beardeddragon/drake.js', '../../beardeddragon/drake6190.js?gcb=0&amp;cb=4', false, [], true, false, true, false);</script></body>
+<!-- Mirrored from html.design/demo/rufam/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 18 Jun 2022 09:34:40 GMT -->
+</html>
+
+{% endblock content %}

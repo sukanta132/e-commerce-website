@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+     <!-- inner page banner -->
+     <div class="section inner_banner">
+        <div class="container">
+           <div class="row">
+              <div class="col-md-12">
+                 <div class="full">
+                    <h3>Product Grid</h3>
+                    <ul class="breadcrum">
+                       <li><a href="home_1.html">Home</a></li>
+                       <li>&gt;</li>
+                       <li>Product Grid</li>
+                    </ul>
+                 </div>
+              </div>
+           </div>
+        </div>
+     </div>
+     <!-- end inner page banner -->
+     <!-- section -->
+     <div id="content-page" class="section main-content-box">
+        <div class="container-fluid limit-box">
+           <div class="row">
+              <aside class="col-lg-12">
+                 <div class="right-product-box">
+                    <div class="row no-gutters list-top-bar">
+                       <div class="mb-2 col-12 col-sm-4 text-center text-sm-left">
+                          
+                       </div>
+                       <div class="mb-2 col-12 col-sm-8 text-center text-sm-right">
+                          <div class="toolbar-sorter-right d-md-flex align-items-center">
+                             <span>Sort by </span>
+                             <select class="wide">
+                                <option data-display="Select">Nothing</option>
+                                <option value="1">Popularity</option>
+                                <option value="2">High Price → High Price</option>
+                                <option value="3">Low Price → High Price</option>
+                                <option value="4">Best Selling</option>
+                             </select>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="row no-gutters main-categorie">
+                       <div class="tab-content">
+                          <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
+                             <div class="row">
+                              {% if product_category %}
+                              {% for abc in product_category %}
+                                <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                                   <div class="product-item-info">
+                                      <div class="product-item-photo">
+                                         <div class="item-gallery">
+                                            <a href="{% url 'ProductDetails' product_slug=abc.slug %}"> <img src="{{ abc.cover_image.url }}" alt=""/> </a>
+                                            <div class="bot-line-new"> <span>New</span> </div>
+                                            <div class="share-button">
+                                               <a href="#" class="no_wishlist" data-toggle="tooltip" data-placement="left" title="Add to WishList"> <span class="icon icon-heart"></span> </a>
+                                               <a href="#" class="compare-add" data-toggle="tooltip" data-placement="left" title="Add to Compare"> <span class="icon icon-loop"></span> </a>
+                                               <div class="item-actions">
+                                                  <div class="share-button-list">
+                                                     <span class="icon icon-share2"></span>
+                                                     <ul>
+                                                        <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+                                                     </ul>
+                                                  </div>
+                                               </div>
+                                            </div>
+                                         </div>
+                                      </div>
+                                      <div class="product-item-details">
+                                         <div class="product_cont">
+                                            <p class="info_pr">{{ abc.product_category }}</p>
+                                            <h3>{{ abc.name|title }}</h3>
+                                            <p class="price_tag">₹{{ abc.price }} <span class="old_price">₹900</span></p>
+                                            <div class="bottom_bt_pr">
+                                               <a class="bt_pro" href="{% url 'ProductDetails' product_slug=abc.slug %} ">view product</a>
+                                               <!-- <a class="bt_pro" href="product_detail.html">Buy Now</a> -->
+                                            </div>
+                                         </div>
+                                      </div>
+                                   </div>
+                                </div>
+                              {% endfor %}
+                              {% else %}
+                              <div class="alert alert-info"> product category not found </div>
+                              {% endif %}
+                            
+                             </div>
+                          </div>
+                          <!-- list -->
+                          
+                       </div>
+                    </div>
+                    
+                 </div>
+              </aside>
+           </div>
+        </div>
+     </div>
+     <!-- end section -->
+
+{% endblock content %}
